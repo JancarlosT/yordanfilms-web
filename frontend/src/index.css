@@ -1,0 +1,84 @@
+:root {
+  --negro: #0a0a0a;
+  --blanco: #ffffff;
+  --gris-claro: #f5f5f5;
+  --gris-medio: #6c6c6c;
+  --gris-borde: #e0e0e0;
+}
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: var(--negro);
+}
+
+.btn-primary {
+  background-color: var(--negro) !important;
+  border-color: var(--negro) !important;
+}
+
+.btn-primary:hover {
+  background-color: #2a2a2a !important;
+  border-color: #2a2a2a !important;
+}
+
+.btn-outline-light:hover {
+  color: var(--negro) !important;
+}
+
+.text-primary {
+  color: var(--negro) !important;
+}
+
+.card {
+  border: 1px solid var(--gris-borde);
+}
+
+.navbar-brand img {
+  height: 0px;
+  width: auto;
+}
+
+.carrusel-img {
+  height: 45vh;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .carrusel-img {
+    height: 30vh;
+  }
+}
+
+.navbar {
+  background-color: var(--negro) !important;
+}
+
+.cta-fondo {
+  position: relative;
+  background-image: url("/imagenes/equipo.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.cta-fondo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(6px);
+}
+
+.cta-fondo > * {
+  position: relative;
+  z-index: 1;
+}
+
+.bg-negro {
+  background-color: var(--negro) !important;
+}
+
+.texto-balanceado {
+  text-wrap: balance;
+}
