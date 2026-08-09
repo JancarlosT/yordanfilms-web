@@ -1,29 +1,42 @@
 import { Link } from "react-router-dom";
 import { MessageCircle, Mail, Camera, Phone } from "lucide-react";
+import { imgUrl } from "../utils/imgUrl";
 
 const trabajosCarrusel = [
   {
     id: 1,
-    img: "/imagenes/equipo.jpg",
+    img: imgUrl("imagenes/equipo.jpg"),
     texto: "Equipo de producción profesional",
   },
   {
     id: 2,
-    img: "/imagenes/yordan4.jpg",
+    img: imgUrl("imagenes/yordan4.jpg"),
     texto: "Videos musicales",
   },
   {
     id: 3,
-    img: "/imagenes/yordan8.jpg",
+    img: imgUrl("imagenes/yordan8.jpg"),
     texto: "Eventos y comerciales",
   },
 ];
 
 const fotosArtistas = [
-  { id: 1, img: "/imagenes/jonz.jpg", texto: "Grabación con artista local" },
-  { id: 2, img: "/imagenes/nino.jpg", texto: "Detrás de cámaras" },
-  { id: 3, img: "/imagenes/mariya.jpg", texto: "Sesión de video musical" },
-  { id: 4, img: "/imagenes/maffio.jpg", texto: "Producción de comercial" },
+  {
+    id: 1,
+    img: imgUrl("imagenes/jonz.jpg"),
+    texto: "Grabación con artista local",
+  },
+  { id: 2, img: imgUrl("imagenes/nino.jpg"), texto: "Detrás de cámaras" },
+  {
+    id: 3,
+    img: imgUrl("imagenes/mariya.jpg"),
+    texto: "Sesión de video musical",
+  },
+  {
+    id: 4,
+    img: imgUrl("imagenes/maffio.jpg"),
+    texto: "Producción de comercial",
+  },
 ];
 
 const estadisticas = [
@@ -115,7 +128,7 @@ export default function Home() {
         <div className="row align-items-center g-5">
           <div className="col-md-5 text-center">
             <img
-              src="/imagenes/yordan11.jpg"
+              src={imgUrl("imagenes/yordan11.jpg")}
               alt="Jordany Minaya"
               className="rounded-circle shadow-sm"
               style={{ width: "280px", height: "280px", objectFit: "cover" }}
@@ -158,7 +171,11 @@ export default function Home() {
 
       <div
         className="cta-fondo text-center text-light py-5"
-        style={{ paddingTop: "5rem", paddingBottom: "5rem" }}
+        style={{
+          paddingTop: "5rem",
+          paddingBottom: "5rem",
+          backgroundImage: `url(${imgUrl("imagenes/equipo.jpg")})`,
+        }}
       >
         <h2 className="fw-bold mb-3">¿Listo para reservar tu fecha?</h2>
         <p className="text-light mb-4">

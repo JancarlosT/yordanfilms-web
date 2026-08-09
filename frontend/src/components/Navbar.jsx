@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { imgUrl } from "../utils/imgUrl"; 
 
 export default function Navbar() {
   const linkClase = ({ isActive }) => "nav-link" + (isActive ? " fw-bold" : "");
@@ -10,23 +11,17 @@ export default function Navbar() {
           className="navbar-brand fw-bold d-flex align-items-center gap-2"
           to="/"
         >
-          <NavLink
-            className="navbar-brand fw-bold d-flex align-items-center gap-2"
-            to="/"
-          >
-            <img
-              src="/imagenes/logo.png"
-              alt="YordanFilms"
-              style={{
-                height: "60px",
-                maxHeight: "60px",
-                width: "auto",
-                objectFit: "contain",
-              }}
-            />
-            YordanFilms
-          </NavLink>
-          
+          <img
+            src={`${import.meta.env.BASE_URL}imagenes/logo.png`}
+            alt="YordanFilms"
+            style={{
+              height: "60px",
+              maxHeight: "60px",
+              width: "auto",
+              objectFit: "contain",
+            }}
+          />
+          YordanFilms
         </NavLink>
 
         <button

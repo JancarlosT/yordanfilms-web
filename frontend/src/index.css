@@ -56,7 +56,6 @@ body {
 
 .cta-fondo {
   position: relative;
-  background-image: url("/imagenes/equipo.jpg");
   background-size: cover;
   background-position: center;
   overflow: hidden;

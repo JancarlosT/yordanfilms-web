@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { categorias } from "../data/portafolioData";
+import { imgUrl } from "../utils/imgUrl";
 
 export default function Portafolio() {
   return (
@@ -7,12 +8,14 @@ export default function Portafolio() {
       {/* Hero con fondo desenfocado */}
       <div
         className="cta-fondo text-center text-light py-5"
-        style={{ paddingTop: "6rem", paddingBottom: "6rem" }}
+        style={{
+          paddingTop: "6rem",
+          paddingBottom: "6rem",
+          backgroundImage: `url(${imgUrl("imagenes/equipo.jpg")})`,
+        }}
       >
         <h1 className="fw-bold mb-2">Portafolio</h1>
-        <p className="fs-5 text-light">
-          Explora nuestro trabajo por categoría
-        </p>
+        <p className="fs-5 text-light">Explora nuestro trabajo por categoría</p>
       </div>
 
       {/* Tarjetas de categorías */}
@@ -26,7 +29,7 @@ export default function Portafolio() {
                   style={{ height: "300px" }}
                 >
                   <img
-                    src={cat.imagenPortada}
+                    src={imgUrl(cat.imagenPortada)}
                     alt={cat.titulo}
                     className="w-100 h-100"
                     style={{ objectFit: "cover" }}
@@ -34,7 +37,8 @@ export default function Portafolio() {
                   <div
                     className="position-absolute bottom-0 start-0 w-100 p-4 text-light"
                     style={{
-                      background: "linear-gradient(transparent, rgba(0,0,0,0.85))",
+                      background:
+                        "linear-gradient(transparent, rgba(0,0,0,0.85))",
                     }}
                   >
                     <h3 className="fw-bold mb-0">{cat.titulo}</h3>

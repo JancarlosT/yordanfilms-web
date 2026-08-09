@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { categorias } from "../data/portafolioData";
 import VideoYoutube from "../components/VideoYoutube";
+import { imgUrl } from "../utils/imgUrl";
 
 export default function PortafolioCategoria() {
   const { slug } = useParams();
@@ -39,7 +40,7 @@ export default function PortafolioCategoria() {
                 />
               ) : (
                 <img
-                  src={t.img}
+                  src={imgUrl(t.img)}
                   className="card-img-top"
                   alt={t.titulo}
                   loading="lazy"

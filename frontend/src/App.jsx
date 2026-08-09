@@ -9,7 +9,7 @@ import PortafolioCategoria from "./pages/PortafolioCategoria";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/yordanfilms-web">
       <Navbar />
       <main>
         <Routes>
