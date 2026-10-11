@@ -5,6 +5,7 @@ from models import db, Servicio, Cita
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
 import os
+import threading
 
 load_dotenv()
 
@@ -18,6 +19,10 @@ elif database_url.startswith("postgresql://"):
     database_url = database_url.replace("postgresql://", "postgresql+psycopg2://", 1)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
+    "pool_pre_ping": True,
+    "pool_recycle": 300,
+}
 db.init_app(app)
 
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
@@ -68,6 +73,14 @@ def listar_citas():
     return jsonify([c.to_dict() for c in citas])
 
 
+def _enviar_en_segundo_plano(msg):
+    with app.app_context():
+        try:
+            mail.send(msg)
+        except Exception as e:
+            print(f"Error al enviar correo de notificacion: {e}")
+
+
 def enviar_notificacion_reserva(cita):
     try:
         msg = Message(
@@ -91,11 +104,11 @@ Deposito requerido (50%): ${cita.deposito_requerido:.2f}
 Notas del cliente:
 {cita.notas or "Ninguna"}
 """
-        mail.send(msg)
+        threading.Thread(
+            target=_enviar_en_segundo_plano, args=(msg,), daemon=True
+        ).start()
     except Exception as e:
-        # Si el correo falla, no queremos que se caiga toda la reserva.
-        # Solo lo registramos en la terminal para revisarlo despues.
-        print(f"Error al enviar correo de notificacion: {e}")
+        print(f"Error al preparar correo de notificacion: {e}")
 
 
 @app.route("/api/citas", methods=["POST"])
